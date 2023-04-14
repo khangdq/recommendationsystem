@@ -118,7 +118,7 @@ def app():
         with st.expander("Description: "):
             st.write(product['description'].values[0])
         with st.expander("Setting"):
-            similar = st.slider('Select the maximum number of products similar to the above that you want the system to recommend (from 1 to 50)', 1, 15, 6)
+            similar = st.slider('Select the maximum number of products similar to the above that you want the system to recommend (from 1 to 50)', 1, 50, 10)
             rating = st.slider('Select the minimum number of ratings similar to the above that you want the system to recommend (from 1 to 10)', 0, 10, 1)
         if st.button('Recomment'):
             df_filter = gensim.iloc[gensim[gensim.product_id==selected_id]['suggestion'].values[0][:similar]]
@@ -134,7 +134,7 @@ def app():
                 display_similar_products(df_filter)
     else:
         with st.expander("Setting"):
-            similar2 = st.slider('Select the maximum number of products similar to the above that you want the system to recommend', 1, 15, 6)
+            similar2 = st.slider('Select the maximum number of products similar to the above that you want the system to recommend', 1, 50, 10)
             rating2 = st.slider('Select the minimum number of ratings similar to the above that you want the system to recommend (from 1 to 10)', 0, 10, 0)
         text = st.text_input('Enter a product name to search:', value='', max_chars=None, key=None, type='default')
         if text != '':
