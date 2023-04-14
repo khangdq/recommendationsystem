@@ -59,7 +59,7 @@ def display_similar_products(df_filter):
                 except:
                     cell.image(Image.open('images/image-not-found-icon.png').resize((150,150)))
 
-                col1, col2 = cell.columns(2)
+                col1, col2 = cell.columns([6,4])
 
                 with col1:
                     try:
@@ -89,7 +89,7 @@ def app():
         st.success(str(data2[data2.user_id==customer_id]['user'].head(1).values[0])+' has successfully logged in') 
 
     with st.expander("Setting"):
-        similar = st.slider('Select the maximum number of products similar to the above that you want the system to recommend (from 1 to 50)', 1, 25, 9)
+        similar = st.slider('Select the maximum number of products similar to the above that you want the system to recommend (from 1 to 25)', 1, 25, 10)
         rating = st.slider('Select the minimum number of ratings similar to the above that you want the system to recommend (from 1 to 10)', 0, 10, 1)
     
     if st.button('Recomment') and (customer_id in user_id):
